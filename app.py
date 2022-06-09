@@ -20,18 +20,6 @@ from jupyter_dash import JupyterDash
 import dash_bootstrap_components as dbc
 from dash.exceptions import PreventUpdate
 
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import scale, StandardScaler
-from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
-
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import SVC
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.naive_bayes import GaussianNB
-
 
 # In[2]:
 
