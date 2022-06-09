@@ -21,14 +21,14 @@ import dash_bootstrap_components as dbc
 from dash.exceptions import PreventUpdate
 
 
-# In[3]:
+# In[2]:
 
 
 image_filename =  'VZLogo1.jpg'
 encoded_image = base64.b64encode(open(image_filename, 'rb').read())
 
 
-# In[4]:
+# In[3]:
 
 
 app = dash.Dash(external_stylesheets=[dbc.themes.JOURNAL, dbc.icons.FONT_AWESOME])
@@ -37,7 +37,7 @@ app.title = "Health Intelligence"
 server = app.server
 
 
-# In[5]:
+# In[4]:
 
 
 app.layout = dbc.Container(
@@ -96,13 +96,13 @@ app.layout = dbc.Container(
         html.Div([
             html.Div(dbc.Button("Check Your Diabetic Status!", color="primary", size = 'lg', id = 'id-predict'),
                      style = {'width':'50%', "font-size": 75,'height':'50px'},className="d-grid gap-2"),
-            html.Div(dbc.Alert("You are likely to have ", id="result-text"), style = {"margin-left": "55px",'width':'50%'}),    
+            html.Div(dbc.Alert("The chance of having diabetic is... ", id="result-text"), style = {"margin-left": "55px",'width':'50%'}),    
         ], style = {'display': 'flex'}), 
             
     ])
 
 
-# In[6]:
+# In[5]:
 
 
 @app.callback(    
