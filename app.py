@@ -21,13 +21,6 @@ import dash_bootstrap_components as dbc
 from dash.exceptions import PreventUpdate
 
 
-# In[2]:
-
-
-methods = {'SVM':'Support Vector Machine', 'LR':'Logistic Regression', 'KNN':'K-NN', 
-           'DecisionTree':'Decision Tree', 'RF':'Random Forest', 'NB':'Naive Bayes'}
-
-
 # In[3]:
 
 
@@ -72,15 +65,6 @@ app.layout = dbc.Container(
             
         ]),       
         
-        html.Br(),             
-        html.Div([
-            dbc.Label("Choose Method", style={'font-weight': 'bold', "font-family": 'Arial', 'color': '#80007c',
-                                  "font-size": 36,"text-align": "center"}),
-            dbc.RadioItems(
-                options=[{'label':methods[key],'value':key} for key in methods], 
-                value='SVM', id="radio-method", inline=True),
-            
-        ]),  
         html.Hr(),
         html.Div([
         html.Label(['Feature Input'], style={'font-weight': 'bold', "font-family": 'Arial', 'color': '#5e34eb',
@@ -123,8 +107,7 @@ app.layout = dbc.Container(
 
 @app.callback(    
     Output('result-text', 'children'),
-    [Input('radio-method', 'value'),
-     Input('id-fea1', 'value'),
+    [Input('id-fea1', 'value'),
      Input('id-fea2', 'value'),
      Input('id-fea3', 'value'),
      Input('id-fea4', 'value'),
@@ -134,13 +117,13 @@ app.layout = dbc.Container(
 )
 def load_data(*args):    
         
-    if(len(args)<5):
+    if(len(args)<6):
         raise PreventUpdate
     else:
-        loaded_model = joblib.load(args[0] + '_' + 'diabetic_classification_model.pkl') 
+        loaded_model = joblib.load('LR_best_classification_model.pkl') 
         result = 'Model loaded .... ' 
         fea_list = []
-        for arg in args[1:6]:
+        for arg in args[0:5]:
             if arg is None:
                 result = 'Enter the value .. '
             else:
@@ -156,7 +139,7 @@ def load_data(*args):
     
 
 
-# In[7]:
+# In[ ]:
 
 
 if __name__ == '__main__':
